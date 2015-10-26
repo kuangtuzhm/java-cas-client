@@ -16,49 +16,6 @@
         server, either via the CAS 1.0 or CAS 2.0 protocol.
     </description>
     <url>http://www.jasig.org/cas</url>
-
-    <issueManagement>
-        <system>JIRA</system>
-        <url>https://issues.jasig.org/browse/CASC</url>
-    </issueManagement>
-
-    <scm>
-        <connection>scm:git:git@github.com:Jasig/java-cas-client.git</connection>
-        <developerConnection>scm:git:git@github.com:Jasig/java-cas-client.git</developerConnection>
-        <url>https://github.com/Jasig/java-cas-client</url>
-      <tag>cas-client-3.4.1</tag>
-  </scm>
-
-    <inceptionYear>2006</inceptionYear>
-
-    <developers>
-        <developer>
-            <id>battags</id>
-            <name>Scott Battaglia</name>
-            <email>scott.battaglia@gmail.com</email>
-            <url>http://www.scottbattaglia.com</url>
-            <roles>
-                <role>Project Admin</role>
-                <role>Developer</role>
-            </roles>
-            <timezone>-5</timezone>
-        </developer>
-        <developer>
-            <id>serac</id>
-            <name>Marvin S. Addison</name>
-            <email>marvin.addison@gmail.com</email>
-            <roles>
-                <role>Developer</role>
-            </roles>
-            <timezone>-5</timezone>
-        </developer>
-    </developers>
-
-    <organization>
-        <name>Jasig</name>
-        <url>http://www.jasig.org</url>
-    </organization>
-
     <build>
         <plugins>
             <plugin>
