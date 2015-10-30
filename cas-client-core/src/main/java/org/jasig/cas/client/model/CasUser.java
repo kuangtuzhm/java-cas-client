@@ -6,7 +6,7 @@ package org.jasig.cas.client.model;
  * @date 2015-7-13
  * @since 1.0
  */
-public class User implements java.io.Serializable {
+public class CasUser implements java.io.Serializable {
 	private static final long serialVersionUID = -2636778397956119662L;
 
 	/**
