@@ -20,6 +20,7 @@ package org.jasig.cas.client.validation;
 
 import java.io.IOException;
 import java.util.*;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,8 +30,11 @@ import org.jasig.cas.client.configuration.ConfigurationKeys;
 import org.jasig.cas.client.proxy.*;
 import org.jasig.cas.client.ssl.HttpURLConnectionFactory;
 import org.jasig.cas.client.ssl.HttpsURLConnectionFactory;
+import org.jasig.cas.client.util.CasPropertiesConfig;
 import org.jasig.cas.client.util.CommonUtils;
 import org.jasig.cas.client.util.ReflectUtils;
+
+import com.appleframework.config.core.PropertyConfigurer;
 
 import static org.jasig.cas.client.configuration.ConfigurationKeys.*;
 
@@ -148,7 +152,7 @@ public class Cas20ProxyReceivingTicketValidationFilter extends AbstractTicketVal
     protected final TicketValidator getTicketValidator(final FilterConfig filterConfig) {
         final boolean allowAnyProxy = getBoolean(ConfigurationKeys.ACCEPT_ANY_PROXY);
         final String allowedProxyChains = getString(ConfigurationKeys.ALLOWED_PROXY_CHAINS);
-        final String casServerUrlPrefix = getString(ConfigurationKeys.CAS_SERVER_URL_PREFIX);
+        final String casServerUrlPrefix = PropertyConfigurer.getValue(CasPropertiesConfig.CAS_SERVER);
         final Class<? extends Cas20ServiceTicketValidator> ticketValidatorClass = getClass(ConfigurationKeys.TICKET_VALIDATOR_CLASS);
         final Cas20ServiceTicketValidator validator;
 

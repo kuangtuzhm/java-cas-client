@@ -21,6 +21,8 @@ package org.jasig.cas.client.util;
 import org.jasig.cas.client.Protocol;
 import org.jasig.cas.client.configuration.ConfigurationKeys;
 
+import com.appleframework.config.core.PropertyConfigurer;
+
 import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -65,7 +67,7 @@ public abstract class AbstractCasFilter extends AbstractConfigurationFilter {
     public final void init(final FilterConfig filterConfig) throws ServletException {
         super.init(filterConfig);
         if (!isIgnoreInitConfiguration()) {
-            setServerName(getString(ConfigurationKeys.SERVER_NAME));
+            setServerName(PropertyConfigurer.getValue(CasPropertiesConfig.SERVER_NAME));
             setService(getString(ConfigurationKeys.SERVICE));
             setEncodeServiceUrl(getBoolean(ConfigurationKeys.ENCODE_SERVICE_URL));
             

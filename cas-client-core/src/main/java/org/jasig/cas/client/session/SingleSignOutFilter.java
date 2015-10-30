@@ -20,13 +20,16 @@ package org.jasig.cas.client.session;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.jasig.cas.client.configuration.ConfigurationKeys;
 import org.jasig.cas.client.util.AbstractConfigurationFilter;
+import org.jasig.cas.client.util.CasPropertiesConfig;
+
+import com.appleframework.config.core.PropertyConfigurer;
 
 /**
  * Implements the Single Sign Out protocol.  It handles registering the session and destroying the session.
@@ -48,7 +51,7 @@ public final class SingleSignOutFilter extends AbstractConfigurationFilter {
             setLogoutParameterName(getString(ConfigurationKeys.LOGOUT_PARAMETER_NAME));
             setFrontLogoutParameterName(getString(ConfigurationKeys.FRONT_LOGOUT_PARAMETER_NAME));
             setRelayStateParameterName(getString(ConfigurationKeys.RELAY_STATE_PARAMETER_NAME));
-            setCasServerUrlPrefix(getString(ConfigurationKeys.CAS_SERVER_URL_PREFIX));
+            setCasServerUrlPrefix(PropertyConfigurer.getValue(CasPropertiesConfig.CAS_SERVER));
             HANDLER.setArtifactParameterOverPost(getBoolean(ConfigurationKeys.ARTIFACT_PARAMETER_OVER_POST));
             HANDLER.setEagerlyCreateSessions(getBoolean(ConfigurationKeys.EAGERLY_CREATE_SESSIONS));
         }

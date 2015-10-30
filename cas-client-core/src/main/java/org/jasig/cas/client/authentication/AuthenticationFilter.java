@@ -30,9 +30,12 @@ import javax.servlet.http.HttpSession;
 import org.jasig.cas.client.Protocol;
 import org.jasig.cas.client.configuration.ConfigurationKeys;
 import org.jasig.cas.client.util.AbstractCasFilter;
+import org.jasig.cas.client.util.CasPropertiesConfig;
 import org.jasig.cas.client.util.CommonUtils;
 import org.jasig.cas.client.util.ReflectUtils;
 import org.jasig.cas.client.validation.Assertion;
+
+import com.appleframework.config.core.PropertyConfigurer;
 
 /**
  * Filter implementation to intercept all requests and attempt to authenticate
@@ -93,7 +96,7 @@ public class AuthenticationFilter extends AbstractCasFilter {
     protected void initInternal(final FilterConfig filterConfig) throws ServletException {
         if (!isIgnoreInitConfiguration()) {
             super.initInternal(filterConfig);
-            setCasServerLoginUrl(getString(ConfigurationKeys.CAS_SERVER_LOGIN_URL));
+            setCasServerLoginUrl(PropertyConfigurer.getValue(CasPropertiesConfig.CAS_SERVER)+"/login");
             setRenew(getBoolean(ConfigurationKeys.RENEW));
             setGateway(getBoolean(ConfigurationKeys.GATEWAY));
                        
