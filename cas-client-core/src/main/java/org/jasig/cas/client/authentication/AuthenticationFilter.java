@@ -159,7 +159,10 @@ public class AuthenticationFilter extends AbstractCasFilter {
             return;
         }
 
-        final String serviceUrl = constructServiceUrl(request, response);
+        //因为有frame等，所以修改为直接返回登录后的主界面
+        //final String serviceUrl = constructServiceUrl(request, response);
+        final String serviceUrl = constructBossMainUrl(request, response);
+        
         final String ticket = retrieveTicketFromRequest(request);
         final boolean wasGatewayed = this.gateway && this.gatewayStorage.hasGatewayedAlready(request, serviceUrl);
 

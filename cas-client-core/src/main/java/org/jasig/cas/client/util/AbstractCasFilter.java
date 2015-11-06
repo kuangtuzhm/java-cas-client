@@ -107,6 +107,15 @@ public abstract class AbstractCasFilter extends AbstractConfigurationFilter {
                 this.protocol.getServiceParameterName(),
                 this.protocol.getArtifactParameterName(), this.encodeServiceUrl);
     }
+    
+    protected final String constructBossMainUrl(final HttpServletRequest request, final HttpServletResponse response) {
+        String bossMainUrl = this.serverName;
+    	if(!bossMainUrl.endsWith("/"))
+        {
+    		bossMainUrl = bossMainUrl+"/";
+        }
+    	return bossMainUrl;
+    }
 
     /**
      * Note that trailing slashes should not be used in the serverName.  As a convenience for this common misconfiguration, we strip them from the provided
